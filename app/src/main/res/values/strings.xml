@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Word Knight</string>
+
+    <string name="locale">EN</string>
 </resources>
