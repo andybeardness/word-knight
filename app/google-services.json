@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "201331457781",
+    "project_id": "word-knight",
+    "storage_bucket": "word-knight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201331457781:android:8f6d41e10009308795cfbc",
+        "android_client_info": {
+          "package_name": "com.beardness.wordknight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201331457781-beoffoqb1bjksiovqcakjf6ju7cuv2nt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd3bLas2_uqoXcW6WtMYwHzepHNblYBr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201331457781-beoffoqb1bjksiovqcakjf6ju7cuv2nt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

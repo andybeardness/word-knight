@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Рыцарь слов</string>
-
     <string name="locale">RU</string>
+    <string name="enter_pattern">Введите паттерн</string>
+    <string name="about">О приложении</string>
+    <string name="motivation_title">Зачем?</string>
+    <string name="motivation_text">Я часто встречаю задачки, когда нужно отгадать слово с пропущенным буками. В этом приложении можно отгадывать подобные загадки</string>
+    <string name="how_title">Как?</string>
+    <string name="how_text">Нужно ввести известные буквы, а вместо неизвестных ввести символ \"_\". Затем нажать на иконку \"Поиск\" и приложение предложит подходяшие слова</string>
+    <string name="example_title">Например</string>
+    <string name="example_text">Если ввести \"С_Б_К_\" и нажать на иконку \"Поиск\", то среди вариантов будет \"СОБАКА\"</string>
 </resources>

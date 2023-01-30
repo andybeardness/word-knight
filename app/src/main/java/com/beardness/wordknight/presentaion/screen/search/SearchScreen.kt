@@ -2,15 +2,15 @@ package com.beardness.wordknight.presentaion.screen.search
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import com.beardness.wordknight.R
+import com.beardness.wordknight.data.wordstype.shortName
+import com.beardness.wordknight.ui.widgets.ad.AdBannerWidget
+import com.beardness.wordknight.ui.widgets.search.SearchWidget
+import com.beardness.wordknight.ui.widgets.toolbar.SearchToolbarWidget
+import com.beardness.wordknight.ui.widgets.word.WordsWidget
 
 @Composable
 fun SearchScreen(
@@ -18,6 +18,9 @@ fun SearchScreen(
     navigateToAboutScreen: () -> Unit,
 ) {
     val words by viewModel.words.collectAsState()
+    val wordsType by viewModel.wordsType.collectAsState()
+
+    val isWordsTypeLoading by viewModel.toolbarWordsTypeLoading.collectAsState()
 
     var input by remember { mutableStateOf("") }
 
@@ -25,40 +28,28 @@ fun SearchScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        TextField(value = input, onValueChange = { update -> input = update })
+        SearchToolbarWidget(
+            title = stringResource(id = R.string.app_name),
+            currentWordsTypeTitle = wordsType.shortName,
+            isWordsTypeLoading = isWordsTypeLoading,
+            onClickWordsType = { viewModel.changeWordsType() },
+            onClickAbout = { navigateToAboutScreen() },
+        )
 
-        Button(
-            onClick = {
-                viewModel.filter(pattern = input)
-            }
-        ) {
-            Text(text = "SEARCH")
-        }
+        SearchWidget(
+            value = input,
+            onValueChange = { update -> input = update },
+            onClickSearch = { pattern -> viewModel.filter(pattern = pattern) },
+            onClickReset = { viewModel.reset() }
+        )
 
-        Button(
-            onClick = {
-                input = ""
-                viewModel.clear()
-            }
-        ) {
-            Text(text = "CLEAR")
-        }
-
-        Button(
-            onClick = {
-                navigateToAboutScreen()
-            }
-        ) {
-            Text(text = "ABOUT")
-        }
-
-        LazyColumn(
+        WordsWidget(
             modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            items(words) { word ->
-                Text(text = word, color = Color.Red)
-            }
-        }
+                .weight(weight = 1f),
+            words = words,
+            copyToClipboard = { value -> viewModel.copyToClipboard(value = value) },
+        )
+
+        AdBannerWidget()
     }
 }

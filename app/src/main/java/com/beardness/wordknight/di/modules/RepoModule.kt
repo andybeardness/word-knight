@@ -1,7 +1,7 @@
 package com.beardness.wordknight.di.modules
 
-import com.beardness.wordknight.presentaion.datasource.WordsDataSource
-import com.beardness.wordknight.presentaion.repo.WordsRepo
+import com.beardness.wordknight.presentaion.datasource.words.WordsDataSource
+import com.beardness.wordknight.presentaion.repo.words.WordsRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

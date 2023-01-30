@@ -1,4 +1,4 @@
-package com.beardness.wordknight.presentaion.datasource
+package com.beardness.wordknight.presentaion.datasource.words
 
 import android.content.Context
 import com.beardness.wordknight.data.wordstype.WordsType
@@ -11,7 +11,7 @@ class WordsDataSource @Inject constructor(
 ) {
     suspend fun words(type: WordsType): List<String> {
         return withContext(Dispatchers.IO) {
-            val stream = context.assets.open(type.filename)
+            val stream = context.assets.open(type.fileName)
 
             val size = stream.available()
 

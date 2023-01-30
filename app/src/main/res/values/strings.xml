@@ -2,4 +2,13 @@
     <string name="app_name">Word Knight</string>
 
     <string name="locale">EN</string>
+
+    <string name="enter_pattern">Enter pattern</string>
+    <string name="about">About</string>
+    <string name="motivation_title">Why?</string>
+    <string name="motivation_text">I often meet puzzles when you need to guess a word with missing letters. In this application, you can guess such riddles</string>
+    <string name="how_title">How?</string>
+    <string name="how_text">You need to enter known letters, and instead of unknown ones, enter the _ symbol. Then click on the Search icon and the app will suggest the appropriate words</string>
+    <string name="example_title">For example</string>
+    <string name="example_text">If you enter D_G and click on the Search icon, then a DOG will be among the options</string>
 </resources>

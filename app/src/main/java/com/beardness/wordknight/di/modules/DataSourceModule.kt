@@ -1,7 +1,7 @@
 package com.beardness.wordknight.di.modules
 
 import android.content.Context
-import com.beardness.wordknight.presentaion.datasource.WordsDataSource
+import com.beardness.wordknight.presentaion.datasource.words.WordsDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
