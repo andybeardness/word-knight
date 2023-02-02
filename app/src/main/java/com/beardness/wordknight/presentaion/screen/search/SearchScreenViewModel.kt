@@ -33,6 +33,9 @@ class SearchScreenViewModel @Inject constructor(
     private val _toolbarWordsTypeLoading = MutableStateFlow<Boolean>(value = false)
     val toolbarWordsTypeLoading = _toolbarWordsTypeLoading.asStateFlow()
 
+    private val _patternLength = MutableStateFlow<Int>(value = 0)
+    val patternLength = _patternLength.asStateFlow()
+
     init {
         collectWordsType()
     }
@@ -40,6 +43,8 @@ class SearchScreenViewModel @Inject constructor(
     fun filter(pattern: String) {
         ioCoroutineScope.launch {
             _wordsLoading.emit(value = true)
+
+            _patternLength.emit(value = pattern.length)
 
             val filteredWords =
                 wordsUseCases

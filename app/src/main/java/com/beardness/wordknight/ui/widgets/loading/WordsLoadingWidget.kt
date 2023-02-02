@@ -6,8 +6,9 @@ import com.beardness.wordknight.ui.widgets.word.WordsWidget
 
 @Composable
 fun WordsLoadingWidget(
-    isWordsLoading: Boolean,
     modifier: Modifier,
+    isWordsLoading: Boolean,
+    patternLength: Int,
     words: List<String>,
     copyToClipboard: (String) -> Unit,
 ) {
@@ -18,6 +19,7 @@ fun WordsLoadingWidget(
     } else {
         WordsWidget(
             modifier = modifier,
+            patternLength = patternLength,
             words = words,
             copyToClipboard = copyToClipboard,
         )

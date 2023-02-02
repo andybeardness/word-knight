@@ -25,6 +25,7 @@ fun SearchScreen(
     val isWordsTypeLoading by viewModel.toolbarWordsTypeLoading.collectAsState()
 
     var input by remember { mutableStateOf("") }
+    val patternLength by viewModel.patternLength.collectAsState()
 
     Column(
         modifier = Modifier
@@ -50,6 +51,7 @@ fun SearchScreen(
                 .weight(weight = 1f)
                 .fillMaxWidth(),
             isWordsLoading = isWordsLoading,
+            patternLength = patternLength,
             words = words,
             copyToClipboard = { value -> viewModel.copyToClipboard(value = value) },
         )
