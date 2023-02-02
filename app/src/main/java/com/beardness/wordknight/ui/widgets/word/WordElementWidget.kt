@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
@@ -24,6 +25,7 @@ import com.beardness.wordknight.ui.theme.WordKnightTheme
 @Composable
 fun WordElementWidget(
     title: String,
+    copyButtonColor: Color,
     onClickCopy: (String) -> Unit
 ) {
     val size = 40.dp
@@ -77,7 +79,7 @@ fun WordElementWidget(
         Box(
             modifier = Modifier
                 .background(
-                    color = WordKnightTheme.colors.blue,
+                    color = copyButtonColor,
                     shape = endShape,
                 )
                 .fillMaxHeight()
@@ -104,5 +106,6 @@ fun Preview_WordElementWidget() {
     WordElementWidget(
         title = "word",
         onClickCopy = {},
+        copyButtonColor = WordKnightTheme.colors.blue,
     )
 }
