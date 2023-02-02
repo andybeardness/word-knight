@@ -22,6 +22,7 @@ class WordsUseCases @Inject constructor(
         return words
             .value
             .filter { word -> wordsMatcher.filter(word = word, pattern = pattern) }
+            .sortedBy { word -> word.length }
     }
 
     suspend fun changeWordsType() {
