@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.beardness.wordknight.R
 import com.beardness.wordknight.ui.widgets.description.DescriptionWidget
 import com.beardness.wordknight.ui.widgets.description.components.DefaultDescriptionComponent
+import com.beardness.wordknight.ui.widgets.description.components.PolicyDescriptionComponent
 import com.beardness.wordknight.ui.widgets.toolbar.AboutToolbarWidget
 
 @Composable
@@ -43,6 +44,10 @@ fun AboutScreen(
 
             DescriptionWidget(title = stringResource(id = R.string.example_title)) {
                 DefaultDescriptionComponent(text = stringResource(id = R.string.example_text))
+            }
+
+            DescriptionWidget(title = stringResource(id = R.string.policy_title)) {
+                PolicyDescriptionComponent()
             }
         }
     }
