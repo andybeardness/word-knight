@@ -9,4 +9,7 @@ Word Knight -- android app to find words by symbols
 
 ### 02-02-2023
 
-- Sorting words by length while filter
+- FEATURES :
+- - Sorting words by length while filter
+- - New splash screen color
+- - Loading screen while filter

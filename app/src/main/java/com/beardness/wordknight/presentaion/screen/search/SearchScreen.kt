@@ -2,15 +2,16 @@ package com.beardness.wordknight.presentaion.screen.search
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.beardness.wordknight.R
 import com.beardness.wordknight.data.wordstype.shortName
 import com.beardness.wordknight.ui.widgets.ad.AdBannerWidget
+import com.beardness.wordknight.ui.widgets.loading.WordsLoadingWidget
 import com.beardness.wordknight.ui.widgets.search.SearchWidget
 import com.beardness.wordknight.ui.widgets.toolbar.SearchToolbarWidget
-import com.beardness.wordknight.ui.widgets.word.WordsWidget
 
 @Composable
 fun SearchScreen(
@@ -20,6 +21,7 @@ fun SearchScreen(
     val words by viewModel.words.collectAsState()
     val wordsType by viewModel.wordsType.collectAsState()
 
+    val isWordsLoading by viewModel.wordsLoading.collectAsState()
     val isWordsTypeLoading by viewModel.toolbarWordsTypeLoading.collectAsState()
 
     var input by remember { mutableStateOf("") }
@@ -43,9 +45,11 @@ fun SearchScreen(
             onClickReset = { viewModel.reset() }
         )
 
-        WordsWidget(
+        WordsLoadingWidget(
             modifier = Modifier
-                .weight(weight = 1f),
+                .weight(weight = 1f)
+                .fillMaxWidth(),
+            isWordsLoading = isWordsLoading,
             words = words,
             copyToClipboard = { value -> viewModel.copyToClipboard(value = value) },
         )
