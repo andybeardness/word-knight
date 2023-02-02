@@ -1,20 +1,20 @@
 package com.beardness.wordknight.presentaion.repo.words
 
 import com.beardness.wordknight.data.wordstype.WordsType
-import com.beardness.wordknight.presentaion.datasource.words.WordsDataSource
+import com.beardness.wordknight.presentaion.datasource.words.IWordsDataSource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class WordsRepo(
-    private val wordsDataSource: WordsDataSource,
-) {
+    private val wordsDataSource: IWordsDataSource,
+) : IWordsRepo {
     private val _words = MutableStateFlow(value = emptyList<String>())
-    val words = _words.asStateFlow()
+    override val words = _words.asStateFlow()
 
     private val _wordsType = MutableStateFlow<WordsType?>(value = null)
-    val wordsType = _wordsType.asStateFlow()
+    override val wordsType = _wordsType.asStateFlow()
 
-    suspend fun setupWords(wordsType: WordsType) {
+    override suspend fun setupWords(wordsType: WordsType) {
         val words = wordsDataSource.words(type = wordsType)
 
         _words.emit(value = words)

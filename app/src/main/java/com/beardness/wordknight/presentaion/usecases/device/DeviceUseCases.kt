@@ -4,12 +4,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
-class DeviceUseCases @Inject constructor() {
-
+class DeviceUseCases @Inject constructor() : IDeviceUseCases {
     private val _copyToClipboard = MutableStateFlow<String?>(value = null)
-    val copyToClipboard = _copyToClipboard.asStateFlow()
+    override val copyToClipboard = _copyToClipboard.asStateFlow()
 
-    suspend fun copyToClipboard(value: String) {
+    override suspend fun copyToClipboard(value: String) {
         _copyToClipboard.emit(value = value)
     }
 }

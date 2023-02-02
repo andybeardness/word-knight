@@ -1,0 +1,3 @@
+package com.beardness.wordknight.presentaion.screen.about
+
+interface IAboutScreenViewModel

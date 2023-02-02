@@ -19,28 +19,28 @@ class SearchScreenViewModel @Inject constructor(
     private val deviceUseCases: DeviceUseCases,
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
     @MainCoroutineScope private val mainCoroutineScope: CoroutineScope,
-): ViewModel() {
+): ViewModel(), ISearchScreenViewModel {
 
     private val _words = MutableStateFlow(value = emptyList<String>())
-    val words = _words.asStateFlow()
+    override val words = _words.asStateFlow()
 
     private val _wordsType = MutableStateFlow<WordsType?>(value = null)
-    val wordsType = _wordsType.asStateFlow()
+    override val wordsType = _wordsType.asStateFlow()
 
     private val _wordsLoading = MutableStateFlow<Boolean>(value = false)
-    val wordsLoading = _wordsLoading.asStateFlow()
+    override val wordsLoading = _wordsLoading.asStateFlow()
 
     private val _toolbarWordsTypeLoading = MutableStateFlow<Boolean>(value = false)
-    val toolbarWordsTypeLoading = _toolbarWordsTypeLoading.asStateFlow()
+    override val toolbarWordsTypeLoading = _toolbarWordsTypeLoading.asStateFlow()
 
     private val _patternLength = MutableStateFlow<Int>(value = 0)
-    val patternLength = _patternLength.asStateFlow()
+    override val patternLength = _patternLength.asStateFlow()
 
     init {
         collectWordsType()
     }
 
-    fun filter(pattern: String) {
+    override fun filter(pattern: String) {
         ioCoroutineScope.launch {
             _wordsLoading.emit(value = true)
 
@@ -60,7 +60,7 @@ class SearchScreenViewModel @Inject constructor(
         }
     }
 
-    fun changeWordsType() {
+    override fun changeWordsType() {
         ioCoroutineScope.launch {
             mainCoroutineScope.launch {
                 _toolbarWordsTypeLoading.emit(value = true)
@@ -74,13 +74,13 @@ class SearchScreenViewModel @Inject constructor(
         }
     }
 
-    fun reset() {
+    override fun reset() {
         mainCoroutineScope.launch {
             _words.emit(value = emptyList())
         }
     }
 
-    fun copyToClipboard(value: String) {
+    override fun copyToClipboard(value: String) {
         ioCoroutineScope.launch {
             deviceUseCases.copyToClipboard(value = value)
         }

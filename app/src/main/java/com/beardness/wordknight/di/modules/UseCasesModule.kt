@@ -1,9 +1,10 @@
 package com.beardness.wordknight.di.modules
 
-import com.beardness.wordknight.presentaion.repo.words.WordsRepo
+import com.beardness.wordknight.presentaion.repo.words.IWordsRepo
 import com.beardness.wordknight.presentaion.usecases.device.DeviceUseCases
+import com.beardness.wordknight.presentaion.usecases.device.IDeviceUseCases
 import com.beardness.wordknight.presentaion.usecases.words.WordsUseCases
-import com.beardness.wordknight.utils.wordsmatcher.WordsMatcher
+import com.beardness.wordknight.utils.wordsmatcher.IWordsMatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,8 +18,8 @@ object UseCasesModule {
     @Provides
     @Singleton
     fun provideWordsUseCases(
-        wordsRepo: WordsRepo,
-        wordsMatcher: WordsMatcher,
+        wordsRepo: IWordsRepo,
+        wordsMatcher: IWordsMatcher,
     ): WordsUseCases =
         WordsUseCases(
             wordsRepo = wordsRepo,
@@ -27,6 +28,6 @@ object UseCasesModule {
 
     @Provides
     @Singleton
-    fun provideDeviceUseCases(): DeviceUseCases =
+    fun provideDeviceUseCases(): IDeviceUseCases =
         DeviceUseCases()
 }
