@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import com.beardness.wordknight.R
 import com.beardness.wordknight.data.wordstype.shortName
@@ -13,6 +15,7 @@ import com.beardness.wordknight.ui.widgets.loading.WordsLoadingWidget
 import com.beardness.wordknight.ui.widgets.search.SearchWidget
 import com.beardness.wordknight.ui.widgets.toolbar.SearchToolbarWidget
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchScreen(
     viewModel: SearchScreenViewModel,
@@ -26,6 +29,8 @@ fun SearchScreen(
 
     var input by remember { mutableStateOf("") }
     val patternLength by viewModel.patternLength.collectAsState()
+
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Column(
         modifier = Modifier
@@ -42,7 +47,10 @@ fun SearchScreen(
         SearchWidget(
             value = input,
             onValueChange = { update -> input = update },
-            onClickSearch = { pattern -> viewModel.filter(pattern = pattern) },
+            onClickSearch = { pattern ->
+                keyboardController?.hide()
+                viewModel.filter(pattern = pattern)
+            },
             onClickReset = { viewModel.reset() }
         )
 
