@@ -17,3 +17,4 @@ Word Knight -- android app to find words by symbols
 - BUGS :
 - - Hide keyboard when Search pressed
 - - Make About screen scrollable
+- - Add "" to english about descriptions
