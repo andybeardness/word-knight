@@ -27,6 +27,9 @@ class SearchScreenViewModel @Inject constructor(
     private val _wordsType = MutableStateFlow<WordsType?>(value = null)
     val wordsType = _wordsType.asStateFlow()
 
+    private val _wordsLoading = MutableStateFlow<Boolean>(value = false)
+    val wordsLoading = _wordsLoading.asStateFlow()
+
     private val _toolbarWordsTypeLoading = MutableStateFlow<Boolean>(value = false)
     val toolbarWordsTypeLoading = _toolbarWordsTypeLoading.asStateFlow()
 
@@ -36,6 +39,8 @@ class SearchScreenViewModel @Inject constructor(
 
     fun filter(pattern: String) {
         ioCoroutineScope.launch {
+            _wordsLoading.emit(value = true)
+
             val filteredWords =
                 wordsUseCases
                     .filter(
@@ -45,6 +50,8 @@ class SearchScreenViewModel @Inject constructor(
             mainCoroutineScope.launch {
                 _words.emit(value = filteredWords)
             }
+
+            _wordsLoading.emit(value = false)
         }
     }
 
