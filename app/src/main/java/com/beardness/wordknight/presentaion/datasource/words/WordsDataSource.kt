@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class WordsDataSource @Inject constructor(
     private val context: Context
-) {
-    suspend fun words(type: WordsType): List<String> {
+) : IWordsDataSource {
+    override suspend fun words(type: WordsType): List<String> {
         return withContext(Dispatchers.IO) {
             val stream = context.assets.open(type.fileName)
 

@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.beardness.wordknight.R
 import com.beardness.wordknight.ui.theme.WordKnightTheme
+import com.beardness.wordknight.utils.common.httpsLinkPretty
 
 @Composable
 fun PolicyDescriptionComponent() {
@@ -20,12 +21,7 @@ fun PolicyDescriptionComponent() {
     val context = LocalContext.current
     val intent = remember { Intent(Intent.ACTION_VIEW, Uri.parse(policyUrl)) }
 
-    val policyUrlClean =
-        policyUrl
-            .replace(
-                oldValue = "https://",
-                newValue = "",
-            )
+    val policyUrlClean = policyUrl.httpsLinkPretty()
 
     Text(
         modifier = Modifier

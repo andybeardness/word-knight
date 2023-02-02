@@ -2,9 +2,8 @@ package com.beardness.wordknight.utils.wordsmatcher
 
 import javax.inject.Inject
 
-class WordsMatcher @Inject constructor() {
-
-    fun filter(word: String, pattern: String): Boolean {
+class WordsMatcher @Inject constructor() : IWordsMatcher {
+    override fun filter(word: String, pattern: String): Boolean {
         val lengthIsNotAvailable =
             !isLengthEqualsOrMore(
                 word = word,

@@ -1,6 +1,7 @@
 package com.beardness.wordknight.di.modules
 
 import android.content.Context
+import com.beardness.wordknight.presentaion.datasource.words.IWordsDataSource
 import com.beardness.wordknight.presentaion.datasource.words.WordsDataSource
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ object DataSourceModule {
     @Singleton
     fun provideWordsDataSource(
         @ApplicationContext context: Context
-    ): WordsDataSource =
+    ): IWordsDataSource =
         WordsDataSource(
             context = context,
         )
