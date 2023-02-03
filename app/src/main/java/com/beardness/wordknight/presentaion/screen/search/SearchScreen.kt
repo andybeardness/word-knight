@@ -51,7 +51,10 @@ fun SearchScreen(
                 keyboardController?.hide()
                 viewModel.filter(pattern = pattern)
             },
-            onClickReset = { viewModel.reset() }
+            onClickReset = {
+                viewModel.reset()
+                input = ""
+            }
         )
 
         WordsLoadingWidget(
