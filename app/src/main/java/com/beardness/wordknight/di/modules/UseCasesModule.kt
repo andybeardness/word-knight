@@ -3,6 +3,7 @@ package com.beardness.wordknight.di.modules
 import com.beardness.wordknight.presentaion.repo.words.IWordsRepo
 import com.beardness.wordknight.presentaion.usecases.device.DeviceUseCases
 import com.beardness.wordknight.presentaion.usecases.device.IDeviceUseCases
+import com.beardness.wordknight.presentaion.usecases.words.IWordsUseCases
 import com.beardness.wordknight.presentaion.usecases.words.WordsUseCases
 import com.beardness.wordknight.utils.wordsmatcher.IWordsMatcher
 import dagger.Module
@@ -20,7 +21,7 @@ object UseCasesModule {
     fun provideWordsUseCases(
         wordsRepo: IWordsRepo,
         wordsMatcher: IWordsMatcher,
-    ): WordsUseCases =
+    ): IWordsUseCases =
         WordsUseCases(
             wordsRepo = wordsRepo,
             wordsMatcher = wordsMatcher,

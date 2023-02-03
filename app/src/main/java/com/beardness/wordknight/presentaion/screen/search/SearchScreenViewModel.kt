@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.beardness.wordknight.data.wordstype.WordsType
 import com.beardness.wordknight.di.modules.qualifiers.IoCoroutineScope
 import com.beardness.wordknight.di.modules.qualifiers.MainCoroutineScope
-import com.beardness.wordknight.presentaion.usecases.device.DeviceUseCases
-import com.beardness.wordknight.presentaion.usecases.words.WordsUseCases
+import com.beardness.wordknight.presentaion.usecases.device.IDeviceUseCases
+import com.beardness.wordknight.presentaion.usecases.words.IWordsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchScreenViewModel @Inject constructor(
-    private val wordsUseCases: WordsUseCases,
-    private val deviceUseCases: DeviceUseCases,
+    private val wordsUseCases: IWordsUseCases,
+    private val deviceUseCases: IDeviceUseCases,
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
     @MainCoroutineScope private val mainCoroutineScope: CoroutineScope,
 ): ViewModel(), ISearchScreenViewModel {
