@@ -17,3 +17,8 @@
 - - Add "" to english about descriptions
 - DEV TASKS :
 - - Encapsulating all components
+
+## 03-02-2023
+
+- HOTFIXES :
+- - Clipboard not working
