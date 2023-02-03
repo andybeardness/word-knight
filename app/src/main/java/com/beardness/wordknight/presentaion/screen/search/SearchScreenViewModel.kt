@@ -6,6 +6,7 @@ import com.beardness.wordknight.di.modules.qualifiers.IoCoroutineScope
 import com.beardness.wordknight.di.modules.qualifiers.MainCoroutineScope
 import com.beardness.wordknight.presentaion.usecases.device.IDeviceUseCases
 import com.beardness.wordknight.presentaion.usecases.words.IWordsUseCases
+import com.beardness.wordknight.utils.searchfilter.ISearchInputManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class SearchScreenViewModel @Inject constructor(
     private val wordsUseCases: IWordsUseCases,
     private val deviceUseCases: IDeviceUseCases,
+    private val searchInputManager: ISearchInputManager,
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
     @MainCoroutineScope private val mainCoroutineScope: CoroutineScope,
 ): ViewModel(), ISearchScreenViewModel {
@@ -84,6 +86,10 @@ class SearchScreenViewModel @Inject constructor(
         ioCoroutineScope.launch {
             deviceUseCases.copyToClipboard(value = value)
         }
+    }
+
+    override fun prepareSearchInput(input: String): String {
+        return searchInputManager.prepare(input = input)
     }
 
     private fun collectWordsType() {

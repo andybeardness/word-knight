@@ -14,4 +14,5 @@ interface ISearchScreenViewModel {
     fun changeWordsType()
     fun reset()
     fun copyToClipboard(value: String)
+    fun prepareSearchInput(input: String): String
 }
