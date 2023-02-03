@@ -50,6 +50,7 @@ fun SearchWidget(
             onValueChange = onValueChange,
             colors = colors,
             placeHolderTitle = placeHolderTitle,
+            onClickSearch = onClickSearch,
         )
 
         ResetButtonComponent(
