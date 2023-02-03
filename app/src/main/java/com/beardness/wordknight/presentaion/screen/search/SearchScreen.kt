@@ -46,7 +46,7 @@ fun SearchScreen(
 
         SearchWidget(
             value = input,
-            onValueChange = { update -> input = update },
+            onValueChange = { update -> input = viewModel.prepareSearchInput(input = update) },
             onClickSearch = { pattern ->
                 keyboardController?.hide()
                 viewModel.filter(pattern = pattern)
