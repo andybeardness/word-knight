@@ -22,3 +22,7 @@
 
 - HOTFIXES :
 - - Clipboard not working
+- FEATURES :
+- - Search button on keyboard
+- - Make input of non-alphabetic letter to underscore
+- - Clear search input when Cancel button clicked
